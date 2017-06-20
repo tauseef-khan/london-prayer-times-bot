@@ -84,7 +84,7 @@ def construct_schedule():
 
     # Open a worksheet from spreadsheet with one shot
     #wks = gc.open_by_url('https://drive.google.com/open?id=1atbX-oMa6qeS0VjScLUAzEaghCVyh8MkcJ9pk5r3sAk')
-    wks = gc.open_by_key('1atbX-oMa6qeS0VjScLUAzEaghCVyh8MkcJ9pk5r3sAk')
+    wks = gc.open_by_url('https://docs.google.com/spreadsheets/d/1atbX-oMa6qeS0VjScLUAzEaghCVyh8MkcJ9pk5r3sAk/edit?usp=sharing')
     worksheet = wks.worksheet(monthCode)
 
     # Fetch a cell range
