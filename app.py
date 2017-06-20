@@ -2,6 +2,10 @@ import os
 import sys
 import json
 
+import datetime
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
+
 import requests
 from flask import Flask, request
 
@@ -39,7 +43,9 @@ def webhook():
                     recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
                     message_text = messaging_event["message"]["text"]  # the message's text
 
+                    message = construct_schedule()
                     send_message(sender_id, "roger that!")
+                    send_message(sender_id, message)
 
                 if messaging_event.get("delivery"):  # delivery confirmation
                     pass
@@ -51,6 +57,51 @@ def webhook():
                     pass
 
     return "ok", 200
+
+def construct_schedule():
+
+    # get date details
+    day = datetime.datetime.day()
+    month = datetime.datetime.month()
+    monthCode = ""
+
+    if month == 6:
+        monthCode = "Jun-17"
+
+    # sort out cell range
+    dayCell = str(day + 2)
+    cellRange = 'B' + dayCell + ":" + "M" + dayCell
+
+    # read from excel sheet which has times in it
+    # authentication
+    scope = ['https://spreadsheets.google.com/feeds']
+    credentials = ServiceAccountCredentials.from_json_keyfile_name('CF Data Extraction-ed446c061ae6.json', scope)
+    gc = gspread.authorize(credentials)
+
+    # Open a worksheet from spreadsheet with one shot
+    wks = gc.open_by_url('https://docs.google.com/spreadsheets/d/1atbX-oMa6qeS0VjScLUAzEaghCVyh8MkcJ9pk5r3sAk/edit?usp=sharing')
+    worksheet = wks.worksheet(monthCode)
+
+    # Fetch a cell range
+    values_list = worksheet.row_values(day + 2)
+    times = values_list[1:13]
+
+    # construct message
+    msg = "Prayer Times for today are:" + "\n" +  
+            "Fajr Begins - " + times[1] + "\n" +
+            "Fajr Jama'ah - " + times[2] + "\n" +
+            "Sunrise - " + times[3] + "\n" +
+            "Zuhr Begins - " + times[4] + "\n" +
+            "Zuhr Jama'ah - " + times[5] + "\n" +
+            "Asr Mithl 1 - " + times[6] + "\n" +
+            "Asr Mithl 2 - " + times[7] + "\n" +
+            "Asr Jama'ah - " + times[8] + "\n" +
+            "Magrib Begins - " + times[9] + "\n" +
+            "Maghrib Jama'ah - " times[10] + "\n" +
+            "Isha Begins - " + times[11] + "\n" +
+            "Isha Jama'ah - " + times[12]
+
+    return(msg)
 
 
 def send_message(recipient_id, message_text):
