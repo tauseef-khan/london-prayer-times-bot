@@ -61,8 +61,12 @@ def webhook():
 def construct_schedule():
 
     # get date details
-    day = datetime.datetime.day()
-    month = datetime.datetime.month()
+    #day = datetime.datetime.day()
+    #month = datetime.datetime.month()
+
+    now = datetime.datetime.now()
+    day = now.day
+    month = now.month
     monthCode = ""
 
     if month == 6:
