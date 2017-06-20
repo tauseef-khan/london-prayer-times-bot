@@ -86,7 +86,7 @@ def construct_schedule():
     #wks = gc.open_by_url('https://drive.google.com/open?id=1atbX-oMa6qeS0VjScLUAzEaghCVyh8MkcJ9pk5r3sAk')
     wks = gc.open('test')
     worksheet = wks.worksheet(monthCode)
-    #hello
+    
 
     # Fetch a cell range
     values_list = worksheet.row_values(day + 2)
