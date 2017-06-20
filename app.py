@@ -83,7 +83,8 @@ def construct_schedule():
     gc = gspread.authorize(credentials)
 
     # Open a worksheet from spreadsheet with one shot
-    wks = gc.open_by_url('https://drive.google.com/open?id=1atbX-oMa6qeS0VjScLUAzEaghCVyh8MkcJ9pk5r3sAk')
+    #wks = gc.open_by_url('https://drive.google.com/open?id=1atbX-oMa6qeS0VjScLUAzEaghCVyh8MkcJ9pk5r3sAk')
+    wks = gc.open('elm-prayer-times')
     worksheet = wks.worksheet(monthCode)
 
     # Fetch a cell range
