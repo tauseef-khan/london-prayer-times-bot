@@ -70,7 +70,7 @@ def construct_schedule():
     monthCode = ""
 
     if month == 6:
-        monthCode = "Jun-17"
+        monthCode = "Sheet2"
 
     # sort out cell range
     dayCell = str(day + 2)
@@ -85,7 +85,7 @@ def construct_schedule():
     # Open a worksheet from spreadsheet with one shot
     #wks = gc.open_by_url('https://drive.google.com/open?id=1atbX-oMa6qeS0VjScLUAzEaghCVyh8MkcJ9pk5r3sAk')
     wks = gc.open('test')
-    worksheet = wks.worksheet("Jun-17")
+    worksheet = wks.worksheet("Sheet2")
 
 
     # Fetch a cell range
