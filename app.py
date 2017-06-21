@@ -95,23 +95,23 @@ def construct_schedule():
     # construct message
     intro = "Prayer Times for today are:" + "\n"
 
-    fajr_begins = "Fajr Begins - " + times[0] + "\n"
-    fajr_jamaah = "Fajr Jama'ah - " + times[1] + "\n"
+    fajr_begins = "Fajr Begins -\t" + times[0] + "\n"
+    fajr_jamaah = "Fajr Jama'ah -\t" + times[1] + "\n"
 
-    sunrise = "Sunrise - " + times[2] + "\n"
+    sunrise = "Sunrise -\t" + times[2] + "\n"
 
-    zuhr_begins = "Zuhr Begins - " + times[3] + "\n"
-    zuhr_jamaah = "Zuhr Jama'ah - " + times[4] + "\n"
+    zuhr_begins = "Zuhr Begins -\t" + times[3] + "\n"
+    zuhr_jamaah = "Zuhr Jama'ah -\t" + times[4] + "\n"
 
-    asr_mithl1 = "Asr Mithl 1 - " + times[5] + "\n"
-    asr_mithl2 = "Asr Mithl 2 - " + times[6] + "\n"
-    asr_jamaah = "Asr Jama'ah - " + times[7] + "\n"
+    asr_mithl1 = "Asr Mithl 1 -\t" + times[5] + "\n"
+    asr_mithl2 = "Asr Mithl 2 -\t" + times[6] + "\n"
+    asr_jamaah = "Asr Jama'ah -\t" + times[7] + "\n"
 
-    maghrib_begins = "Maghrib Begins - " + times[8] + "\n"
-    maghrib_jamaah = "Maghrib Jama'ah - "  + times[9] + "\n"
+    maghrib_begins = "Maghrib Begins -\t" + times[8] + "\n"
+    maghrib_jamaah = "Maghrib Jama'ah -\t"  + times[9] + "\n"
 
-    isha_begins = "Isha Begins - " + times[10] + "\n"
-    isha_jamaah = "Isha Jama'ah - " + times[11]
+    isha_begins = "Isha Begins -\t" + times[10] + "\n"
+    isha_jamaah = "Isha Jama'ah -\t" + times[11]
 
     msg = intro + fajr_begins + fajr_jamaah + sunrise + zuhr_begins + zuhr_jamaah + asr_mithl1 + asr_mithl2 + asr_jamaah + maghrib_begins + maghrib_jamaah + isha_begins + isha_jamaah
     
