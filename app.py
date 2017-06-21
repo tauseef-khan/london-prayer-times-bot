@@ -70,7 +70,7 @@ def construct_schedule():
     monthCode = ""
 
     if month == 6:
-        monthCode = "Sheet2"
+        monthCode = "Jun-17"
 
     # sort out cell range
     dayCell = str(day + 2)
@@ -79,13 +79,13 @@ def construct_schedule():
     # read from excel sheet which has times in it
     # authentication
     scope = ['https://spreadsheets.google.com/feeds']
-    credentials = ServiceAccountCredentials.from_json_keyfile_name('CF Data Extraction-ed446c061ae6.json', scope)
+    credentials = ServiceAccountCredentials.from_json_keyfile_name('London Prayer Times-dd7e33e594b6.json', scope)
     gc = gspread.authorize(credentials)
 
     # Open a worksheet from spreadsheet with one shot
     #wks = gc.open_by_url('https://drive.google.com/open?id=1atbX-oMa6qeS0VjScLUAzEaghCVyh8MkcJ9pk5r3sAk')
-    wks = gc.open('test')
-    worksheet = wks.worksheet("Sheet2")
+    wks = gc.open('elm-prayer-times')
+    worksheet = wks.worksheet(monthCode)
 
 
     # Fetch a cell range
