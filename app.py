@@ -93,7 +93,7 @@ def construct_schedule():
     times = values_list[1:13]
 
     # construct message
-    intro = "Prayer Times for today are:" + "\n"
+    intro = "Prayer Times for today are:" + "\n\n"
 
     fajr_begins = "Fajr Begins - " + times[0] + "\n"
     fajr_jamaah = "Fajr Jama'ah - " + times[1] + "\n"
