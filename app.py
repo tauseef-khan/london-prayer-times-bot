@@ -71,6 +71,13 @@ def construct_schedule():
 
     if month == 6:
         monthCode = "Jun-17"
+    elif month == 7:
+        monthCode = "Jul-17"
+    elif month == 8:
+        monthCode = "Aug-17"
+    else:
+        monthCode = "Sep-17"
+
 
     # sort out cell range
     dayCell = str(day + 2)
