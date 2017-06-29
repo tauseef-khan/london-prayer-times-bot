@@ -16,7 +16,7 @@ curl -X POST -H "Content-Type: application/json" -d '{
         },
         {
           "type":"web_url",
-          "title":"Like LPT Bot",
+          "title":"Like London Prayer Times Bot",
           "url":"https://www.facebook.com/London-Prayer-Times-Bot-139230819969675/",
           "webview_height_ratio": "full",
         },

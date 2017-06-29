@@ -5,6 +5,7 @@ import json
 import datetime
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
+import subprocess
 
 import requests
 from flask import Flask, request
@@ -64,6 +65,9 @@ def webhook():
 
                     if (message_text == "menu payload"):
                         send_message(sender_id, "Working...")
+
+                    if (message_text == "todays prayer times"):
+                        subproces.call("./quickreply.sh")
 
     return "ok", 200
 
