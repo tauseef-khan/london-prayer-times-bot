@@ -158,12 +158,18 @@ def getStartedButton():
     }
 
     payloader = {
-       "get_started":{
-            "payload":"GET_STARTED_PAYLOAD"
-        }
+       "setting_type":"call_to_actions",
+        "thread_state":"new_thread",
+        "call_to_actions":[
+            { }
+        ]
     }
 
     r = requests.post('https://graph.facebook.com/v2.6/me/thread_settings?access_token='+os.environ["PAGE_ACCESS_TOKEN"], headers=content_header, data=json.dumps(payloader))
+
+    if r.status_code != 200:
+        log(r.status_code)
+        log(r.text)
 
 
 def log(message):  # simple wrapper for logging to stdout on heroku
