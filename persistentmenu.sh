@@ -23,5 +23,5 @@ curl -X POST -H "Content-Type: application/json" -d '{
       ]
     }
   ]
-}' "https://graph.facebook.com/v2.6/me/messenger_profile?access_token=$YOUR_ACCESS_TOKEN_HERE"
+}' "https://graph.facebook.com/v2.6/me/messenger_profile?access_token=$PAGE_ACCESS_TOKEN"
     
