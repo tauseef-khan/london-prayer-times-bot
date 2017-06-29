@@ -5,11 +5,13 @@
 
 # Greeting Text
 curl -X POST -H "Content-Type: application/json" -d '{
-  "setting_type":"greeting",
-  "greeting":{
-    "text":"Salaam {{user_first_name}}, Welcome to London Prayer Times Bot!"
-  }
-}' "https://graph.facebook.com/v2.6/me/thread_settings?access_token=$PAGE_ACCESS_TOKEN"
+  "greeting":[
+    {
+      "locale":"default",
+      "text":"Salaam {{user_first_name}}, Welcome to London Prayer Times Bot!"
+    }
+  ] 
+}' "https://graph.facebook.com/v2.6/me/messenger_profile?access_token=$PAGE_ACCESS_TOKEN"    
 
 # Get Started button
 curl -X POST -H "Content-Type: application/json" -d '{
