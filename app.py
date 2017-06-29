@@ -27,6 +27,8 @@ def verify():
 @app.route('/', methods=['POST'])
 def webhook():
 
+    getStartedButton()
+    
     # endpoint for processing incoming messaging events
 
     data = request.get_json()
@@ -42,8 +44,6 @@ def webhook():
                     sender_id = messaging_event["sender"]["id"]        # the facebook ID of the person sending you the message
                     recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
                     message_text = messaging_event["message"]["text"]  # the message's text
-
-                    getStartedButton()
 
                     message = construct_schedule()
                     send_message(sender_id, "roger that!")
@@ -161,7 +161,9 @@ def getStartedButton():
        "setting_type":"call_to_actions",
         "thread_state":"new_thread",
         "call_to_actions":[
-            { }
+            { 
+                "payload":"USER_DEFINED_PAYLOAD"
+            }
         ]
     }
 
