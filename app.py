@@ -43,6 +43,8 @@ def webhook():
                     recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
                     message_text = messaging_event["message"]["text"]  # the message's text
 
+                    getStartedButton()
+
                     message = construct_schedule()
                     send_message(sender_id, "roger that!")
                     send_message(sender_id, message)
@@ -147,6 +149,21 @@ def send_message(recipient_id, message_text):
     if r.status_code != 200:
         log(r.status_code)
         log(r.text)
+
+
+def getStartedButton():
+
+    content_header = {
+        'Content-Type':'application/json'
+    }
+
+    payloader = {
+       "get_started":{
+            "payload":"GET_STARTED_PAYLOAD"
+        }
+    }
+
+    r = requests.post('https://graph.facebook.com/v2.6/me/thread_settings?access_token='+os.environ["PAGE_ACCESS_TOKEN"], headers=content_header, data=json.dumps(payloader))
 
 
 def log(message):  # simple wrapper for logging to stdout on heroku
