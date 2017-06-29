@@ -65,13 +65,40 @@ def webhook():
 
                     if (message_text == "menu payload"):
                         #subproces.call("./quickreply.sh")
-                        send_message(sender_id, "Working...")
+                        quickReply()
 
                     if (message_text == "todays prayer times"):
                         #subproces.call("./quickreply.sh")
                         send_message(sender_id, "Working ayyyyy...")
 
     return "ok", 200
+
+def quickReply():
+
+    content_header = {
+    'Content-Type':'application/json'
+    }
+
+    payloader = {
+        "recipient":{
+            "id":"USER_ID"
+        },
+        "message":{
+            "text":"Select an option:",
+            "quick_replies":[
+            {
+                    "content_type":"text",
+                    "title":"Todays Times",
+                    "payload":"Todays Prayer Times"
+            }
+            ]
+        }
+    }
+    r = requests.post('https://graph.facebook.com/v2.6/me/thread_settings?access_token='+os.environ["PAGE_ACCESS_TOKEN"], headers=content_header, data=json.dumps(payloader))
+
+    if r.status_code != 200:
+        log(r.status_code)
+        log(r.text)
 
 def construct_schedule():
 
