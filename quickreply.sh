@@ -4,6 +4,9 @@
 # Execute once only
 
 curl -X POST -H "Content-Type: application/json" -d '{
+  "recipient":{
+    "id":"USER_ID"
+  },
   "message":{
     "text":"Select an option:",
     "quick_replies":[

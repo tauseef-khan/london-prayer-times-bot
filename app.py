@@ -45,7 +45,6 @@ def webhook():
                     message_text = messaging_event["message"]["text"]  # the message's text
 
                     message = construct_schedule()
-                    send_message(sender_id, "roger that!")
                     send_message(sender_id, message)
 
                 if messaging_event.get("delivery"):  # delivery confirmation
@@ -63,20 +62,16 @@ def webhook():
                     if (message_text == "get started"):
                         send_message(sender_id, "Further instructions coming...")
 
-                    if (message_text == "menu payload"):
-                        #subproces.call("./quickreply.sh")
-                        quickReply()
-
-                    if (message_text == "todays prayer times"):
-                        #subproces.call("./quickreply.sh")
-                        send_message(sender_id, "Working ayyyyy...")
+                    if (message_text == "Todays Prayer Times"):
+                        message = construct_schedule()
+                        send_message(sender_id, message)
 
     return "ok", 200
 
 def quickReply():
 
     content_header = {
-    'Content-Type':'application/json'
+        'Content-Type':'application/json'
     }
 
     payloader = {
@@ -86,11 +81,11 @@ def quickReply():
         "message":{
             "text":"Select an option:",
             "quick_replies":[
-            {
+                {
                     "content_type":"text",
                     "title":"Todays Times",
                     "payload":"Todays Prayer Times"
-            }
+                }
             ]
         }
     }
