@@ -28,8 +28,6 @@ def verify():
 @app.route('/', methods=['POST'])
 def webhook():
 
-    getStartedButton()
-
     # endpoint for processing incoming messaging events
 
     data = request.get_json()
@@ -57,7 +55,7 @@ def webhook():
                     pass
 
                 if messaging_event.get("postback"):  # user clicked/tapped "postback" button in earlier message
-                    pass
+                    send_message(sender_id, "Salaam and Welcome to London Prayer Times Bot!")
 
     return "ok", 200
 
@@ -150,27 +148,6 @@ def send_message(recipient_id, message_text):
     if r.status_code != 200:
         log(r.status_code)
         log(r.text)
-
-
-def getStartedButton():
-
-    content_header = {
-        'Content-Type':'application/json'
-    }
-
-    payloader = {
-       "setting_type":"greeting",
-            "greeting":{ 
-                "text":"Welcome to London Prayer Times Bot!"
-            }
-    }
-
-    r = requests.post('https://graph.facebook.com/v2.6/me/thread_settings?access_token='+os.environ["PAGE_ACCESS_TOKEN"], headers=content_header, data=json.dumps(payloader))
-
-    if r.status_code != 200:
-        log(r.status_code)
-        log(r.text)
-
 
 def log(message):  # simple wrapper for logging to stdout on heroku
     print str(message)
