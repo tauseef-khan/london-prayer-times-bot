@@ -22,7 +22,6 @@ def verify():
         return request.args["hub.challenge"], 200
 
     return "Hello world", 200
-    log("I'm in verify()")
 
 
 @app.route('/', methods=['POST'])
@@ -61,7 +60,10 @@ def webhook():
                     message_text = message_text.lower()
                      
                     if (message_text == "get started"):
-                        send_message(sender_id, "Salaam and Welcome to London Prayer Times Bot!")
+                        send_message(sender_id, "Further instructions coming...")
+
+                    if (message_text == "menu payload"):
+                        send_message(sender_id, "Working...")
 
     return "ok", 200
 
