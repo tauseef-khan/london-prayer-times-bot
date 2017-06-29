@@ -64,12 +64,12 @@ def webhook():
                         send_message(sender_id, "Further instructions coming...")
 
                     if (message_text == "menu payload"):
-                        subproces.call("./quickreply.sh")
-                        #send_message(sender_id, "Working...")
+                        #subproces.call("./quickreply.sh")
+                        send_message(sender_id, "Working...")
 
                     if (message_text == "todays prayer times"):
                         #subproces.call("./quickreply.sh")
-                        pass
+                        send_message(sender_id, "Working ayyyyy...")
 
     return "ok", 200
 
