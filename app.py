@@ -159,13 +159,10 @@ def getStartedButton():
     }
 
     payloader = {
-       "setting_type":"call_to_actions",
-        "thread_state":"new_thread",
-        "call_to_actions":[
-            { 
-                "payload":"USER_DEFINED_PAYLOAD"
+       "setting_type":"greeting",
+            "greeting":{ 
+                "text":"Welcome to London Prayer Times Bot!"
             }
-        ]
     }
 
     r = requests.post('https://graph.facebook.com/v2.6/me/thread_settings?access_token='+os.environ["PAGE_ACCESS_TOKEN"], headers=content_header, data=json.dumps(payloader))
