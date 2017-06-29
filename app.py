@@ -56,44 +56,19 @@ def webhook():
                 if messaging_event.get("postback"):  # user clicked/tapped "postback" button in earlier message
 
                     sender_id = messaging_event["sender"]["id"]        # the facebook ID of the person sending you the message
-                    message_text = messaging_event["postback"]["payload"]
-                    message_text = message_text.lower()
+                    recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
+
+                    payload_text = messaging_event["postback"]["payload"]
+                    payload_text = payload_text.lower()
                      
-                    if (message_text == "get started"):
+                    if (payload_text == "get started"):
                         send_message(sender_id, "Further instructions coming...")
 
-                    if (message_text == "Todays Prayer Times"):
+                    if (payload_text == "todays prayer times"):
                         message = construct_schedule()
                         send_message(sender_id, message)
 
     return "ok", 200
-
-def quickReply():
-
-    content_header = {
-        'Content-Type':'application/json'
-    }
-
-    payloader = {
-        "recipient":{
-            "id":"USER_ID"
-        },
-        "message":{
-            "text":"Select an option:",
-            "quick_replies":[
-                {
-                    "content_type":"text",
-                    "title":"Todays Times",
-                    "payload":"Todays Prayer Times"
-                }
-            ]
-        }
-    }
-    r = requests.post('https://graph.facebook.com/v2.6/me/thread_settings?access_token='+os.environ["PAGE_ACCESS_TOKEN"], headers=content_header, data=json.dumps(payloader))
-
-    if r.status_code != 200:
-        log(r.status_code)
-        log(r.text)
 
 def construct_schedule():
 
