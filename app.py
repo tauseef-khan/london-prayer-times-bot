@@ -55,6 +55,7 @@ def webhook():
                     pass
 
                 if messaging_event.get("postback"):  # user clicked/tapped "postback" button in earlier message
+                    sender_id = messaging_event["sender"]["id"]        # the facebook ID of the person sending you the message
                     send_message(sender_id, "Salaam and Welcome to London Prayer Times Bot!")
 
     return "ok", 200
