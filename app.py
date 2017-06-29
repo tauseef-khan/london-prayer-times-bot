@@ -22,13 +22,14 @@ def verify():
         return request.args["hub.challenge"], 200
 
     return "Hello world", 200
+    log("I'm in verify()")
 
 
 @app.route('/', methods=['POST'])
 def webhook():
 
     getStartedButton()
-    
+
     # endpoint for processing incoming messaging events
 
     data = request.get_json()
