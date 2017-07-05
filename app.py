@@ -45,6 +45,7 @@ def webhook():
                     message_text = messaging_event["message"]["text"]  # the message's text
 
                     message = construct_schedule()
+                    send_message(sender_id, "1")
                     send_message(sender_id, message)
 
                 if messaging_event.get("delivery"):  # delivery confirmation
@@ -66,6 +67,7 @@ def webhook():
 
                     if (payload_text == "todays prayer times"):
                         message = construct_schedule()
+                        send_message(sender_id, "2")
                         send_message(sender_id, message)
 
     return "ok", 200
@@ -79,6 +81,9 @@ def construct_schedule():
     now = datetime.datetime.now()
     day = now.day
     month = now.month
+    year = now.year
+    date_today = day + "/" + month + "/" + year
+
     monthCode = ""
 
     if month == 6:
@@ -112,7 +117,7 @@ def construct_schedule():
     times = values_list[1:13]
 
     # construct message
-    intro = "Prayer Times for today are:" + "\n\n"
+    intro = "Prayer Times for today (" + date_today + ") are:" + "\n\n"
 
     fajr_begins = "Fajr Begins - " + times[0] + "\n"
     fajr_jamaah = "Fajr Jama'ah - " + times[1] + "\n"
