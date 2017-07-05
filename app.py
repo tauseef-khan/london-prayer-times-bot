@@ -82,7 +82,7 @@ def construct_schedule():
     day = now.day
     month = now.month
     year = now.year
-    date_today = day + "/" + month + "/" + year
+    date_today = str(day) + "/" + str(month) + "/" + str(year)
 
     monthCode = ""
 
