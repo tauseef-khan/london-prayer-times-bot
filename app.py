@@ -3,6 +3,7 @@ import sys
 import json
 
 import datetime
+import pytz
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 import subprocess
@@ -45,7 +46,6 @@ def webhook():
                     message_text = messaging_event["message"]["text"]  # the message's text
 
                     message = construct_schedule()
-                    send_message(sender_id, "1")
                     send_message(sender_id, message)
 
                 if messaging_event.get("delivery"):  # delivery confirmation
@@ -67,7 +67,6 @@ def webhook():
 
                     if (payload_text == "todays prayer times"):
                         message = construct_schedule()
-                        send_message(sender_id, "2")
                         send_message(sender_id, message)
 
     return "ok", 200
@@ -78,7 +77,7 @@ def construct_schedule():
     #day = datetime.datetime.day()
     #month = datetime.datetime.month()
 
-    now = datetime.datetime.now()
+    now = datetime.datetime.now(pytz.timezone('Europe/London'))
     day = now.day
     month = now.month
     year = now.year
