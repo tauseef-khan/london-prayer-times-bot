@@ -85,14 +85,30 @@ def construct_schedule():
 
     monthCode = ""
 
-    if month == 6:
+    if month == 1:
+        monthCode = "Jan-17"
+    elif month == 2:
+        monthCode = "Feb-17"
+    elif month == 3:
+        monthCode = "Mar-17"
+    elif month == 4:
+        monthCode = "Apr-17"
+    elif month == 5:
+        monthCode = "May-17"
+    elif month == 6:
         monthCode = "Jun-17"
     elif month == 7:
         monthCode = "Jul-17"
     elif month == 8:
         monthCode = "Aug-17"
-    else:
+    elif month == 9:
         monthCode = "Sep-17"
+    elif month == 10:
+        monthCode = "Oct-17"
+    elif month == 11:
+        monthCode = "Nov-17"
+    else:
+        monthCode = "Dec-17"
 
 
     # sort out cell range
