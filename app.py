@@ -47,6 +47,7 @@ def webhook():
 
                     message = construct_schedule()
                     send_message(sender_id, message)
+                    send_message(sender_id, "This is where I am when user puts in their onw message...maybe.")
 
                 if messaging_event.get("delivery"):  # delivery confirmation
                     pass
