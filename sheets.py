@@ -52,7 +52,7 @@ def construct_schedule():
     # read from excel sheet which has times in it
     # authentication
     scope = ['https://spreadsheets.google.com/feeds']
-    credentials = ServiceAccountCredentials.from_json(os.environ["GOOGLEAUTH"])
+    credentials = ServiceAccountCredentials.from_json_keyfile_name(os.environ["GOOGLEAUTH"], scope)
     gc = gspread.authorize(credentials)
 
     # Open a worksheet from spreadsheet with one shot
