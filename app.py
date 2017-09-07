@@ -45,6 +45,8 @@ def webhook():
                     recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
                     message_text = messaging_event["message"]["text"]  # the message's text
 
+                    # call wit.ai method in utils.py
+
                     message = construct_schedule()
                     send_message(sender_id, message)
                     send_message(sender_id, "This is where I am when user puts in their onw message...maybe.")
