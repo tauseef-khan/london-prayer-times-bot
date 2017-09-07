@@ -2,10 +2,6 @@ import os
 import sys
 import json
 
-import datetime
-import pytz
-import gspread
-from oauth2client.service_account import ServiceAccountCredentials
 import subprocess
 
 import requests

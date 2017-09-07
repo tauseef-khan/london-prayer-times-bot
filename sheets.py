@@ -1,3 +1,9 @@
+import datetime
+import pytz
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
+import subprocess
+
 def construct_schedule():
 
     # get date details
