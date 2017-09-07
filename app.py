@@ -73,6 +73,7 @@ def webhook():
                     if (payload_text == "todays prayer times"):
                         message = construct_schedule()
                         send_message(sender_id, message)
+                        print(sheets.hello())
 
     return "ok", 200
 
