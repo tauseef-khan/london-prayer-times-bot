@@ -9,7 +9,7 @@ from flask import Flask, request
 
 # custom made modules
 import sheets
-import wit
+import witUtil
 
 app = Flask(__name__)
 
