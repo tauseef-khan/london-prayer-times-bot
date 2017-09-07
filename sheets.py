@@ -3,6 +3,7 @@ import pytz
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 import subprocess
+import os
 
 def construct_schedule():
 
