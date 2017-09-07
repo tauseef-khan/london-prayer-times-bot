@@ -1,5 +1,5 @@
-from wit import Wit
 import os
+from wit import Wit
 
 access_token = os.environ.get('WIT_AI_TOKEN', none)
 
@@ -33,10 +33,10 @@ def wit_response(message_text):
 
 #print(wit_response("I want the prayer times for ELM on July 29"))
 
-info = wit_response("I want the prayer times for ELM on July 29")
-info = (wit_response("July 4"))
+#info = wit_response("I want the prayer times for ELM on July 29")
+#info = (wit_response("July 4"))
 
-print(info[0])
+#print(info[0])
 
 # print(info[3][:10])
 
