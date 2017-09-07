@@ -7,7 +7,9 @@ import subprocess
 import requests
 from flask import Flask, request
 
+# custom made modules
 import sheets
+import wi
 
 app = Flask(__name__)
 
