@@ -1,7 +1,7 @@
 import os
 from wit import Wit
 
-access_token = os.environ.get('WIT_AI_TOKEN', none)
+access_token = os.environ['WIT_AI_TOKEN']
 
 client = Wit(access_token = access_token)
 
