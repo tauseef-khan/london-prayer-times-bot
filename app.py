@@ -46,10 +46,11 @@ def webhook():
                     message_text = messaging_event["message"]["text"]  # the message's text
 
                     # call wit.ai method in utils.py
+                    ai_response = ai.wit_response(message_text)
 
-                    message = sheets.construct_schedule()
-                    send_message(sender_id, message)
-                    send_message(sender_id, "This is where I am when user puts in their onw message...maybe.")
+                    #message = sheets.construct_schedule()
+                    #send_message(sender_id, message)
+                    #send_message(sender_id, "This is where I am when user puts in their onw message...maybe.")
 
                 if messaging_event.get("delivery"):  # delivery confirmation
                     pass
