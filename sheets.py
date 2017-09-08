@@ -4,6 +4,7 @@ import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 import subprocess
 import os
+from io import StringIO
 
 def construct_schedule():
 
@@ -52,7 +53,7 @@ def construct_schedule():
     # read from excel sheet which has times in it
     # authentication
     scope = ['https://spreadsheets.google.com/feeds']
-    credentials = ServiceAccountCredentials.from_json_keyfile_name(os.environ['GOOGLEAUTH'], scope)
+    credentials = ServiceAccountCredentials.from_json_keyfile_name(StringIO.new(os.environ['GOOGLEAUTH']), scope)
     gc = gspread.authorize(credentials)
 
     # Open a worksheet from spreadsheet with one shot
