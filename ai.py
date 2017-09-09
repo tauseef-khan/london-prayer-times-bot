@@ -20,6 +20,7 @@ def wit_response(message_text):
 	entity2 = None
 	value2 = None
 
+
 	try:
 		entity = list(resp['entities'])[0]
 		value = resp['entities'][entity][0]['value']
@@ -30,26 +31,45 @@ def wit_response(message_text):
 		pass
 	return (entity, value, entity2, value2)
 
-#print(wit_response("I want the prayer times for ELM on July 29"))
+
+def extract_info(info):
+
+	masjid = None
+	date = None
+
+	if str(info[0]) == "masjid" and str(info[2]) == "datetime":
+		masjid = str(info[1])
+		date = str(info[3])
+
+	elif str(info[0]) == "masjid":
+		masjid = str(info[1])
+		date = None
+
+	elif str(info[0]) == "datetime":
+		masjid = None
+		date = str(info[1])
+
+	else:
+		masjid = None
+		date = None
+
+	return (masjid, date)
+
 
 info = wit_response("I want the prayer times for ELM on July 29")
+masjid, date = extract_info(info)
 
-print(info)
-print(type(info))
+print("MASJID:", masjid)
+print("DATE:", date)
 
 info = wit_response("I want the prayer times for ELM")
+masjid, date = extract_info(info)
 
-print(info)
-print(type(info))
+print("MASJID:", masjid)
+print("DATE:", date)
 
+info = wit_response("I want the prayer times for 27 March")
+masjid, date = extract_info(info)
 
-key = "datetime"
-
-#print(info[key])
-
-
-#print(info[3][:10])
-
-# print(info[3][:4])
-# print(info[3][5:7])
-# print(info[3][8:10])
+print("MASJID:", masjid)
+print("DATE:", date)

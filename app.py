@@ -47,6 +47,11 @@ def webhook():
 
                     # call wit.ai method in utils.py
                     ai_response = ai.wit_response(message_text)
+                    masjid, date = extract_info(info)
+
+                    if date != None:
+                        message = sheets.construct_schedule(date)
+                        send_message(sender_id, message)
 
                     #message = sheets.construct_schedule()
                     #send_message(sender_id, message)
@@ -70,7 +75,7 @@ def webhook():
                         send_message(sender_id, "Further instructions coming...")
 
                     if (payload_text == "todays prayer times"):
-                        message = sheets.construct_schedule()
+                        message = sheets.construct_schedule(date=None)
                         send_message(sender_id, message)
 
     return "ok", 200

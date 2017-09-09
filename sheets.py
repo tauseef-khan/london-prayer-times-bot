@@ -6,17 +6,32 @@ import subprocess
 import os
 import json
 
-def construct_schedule():
+def construct_schedule(date):
 
     # get date details
     #day = datetime.datetime.day()
     #month = datetime.datetime.month()
 
-    now = datetime.datetime.now(pytz.timezone('Europe/London'))
-    day = now.day
-    month = now.month
-    year = now.year
-    date_today = str(day) + "/" + str(month) + "/" + str(year)
+    now = None
+    day = None
+    month = None
+    year = None
+    date_today = None
+
+    if date != None:
+        prayerDate = datetime.strptime(date, '%Y-%m-%d')
+
+        day = prayerDate.day
+        month = prayerDate.month
+        year = prayerDate.year
+        date_today = str(day) + "/" + str(month) + "/" + str(year)
+
+    else:
+        now = datetime.datetime.now(pytz.timezone('Europe/London'))
+        day = now.day
+        month = now.month
+        year = now.year
+        date_today = str(day) + "/" + str(month) + "/" + str(year)
 
     monthCode = ""
 
