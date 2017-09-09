@@ -62,14 +62,18 @@ def webhook():
                     sender_id = messaging_event["sender"]["id"]        # the facebook ID of the person sending you the message
                     recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
 
-                    if messaging_event["message"]["text"]:
+                    try: 
                         message_text = messaging_event["message"]["text"]  # the message's text
+                    except:
+                        pass
 
-                    elif messaging_event["payload"]["coordinates"]:
-                        location = messaging_event["message"]["text"]
+                    try:
+                        location = messaging_event["payload"]["coordinates"]:
+                    except:
+                        pass
 
-
-                    end_message(sender_id, location)
+                    
+                    send_message(sender_id, location)
 
                     #
                     # call wit.ai method in utils.py
