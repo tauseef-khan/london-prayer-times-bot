@@ -71,7 +71,7 @@ def webhook():
                         pass
 
                     try:
-                        location = messaging_event["attachments"]["payload"]["coordinates"]
+                        location = messaging_event["payload"]["coordinates"]
                     except:
                         pass
 
