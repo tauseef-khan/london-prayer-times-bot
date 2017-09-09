@@ -59,7 +59,8 @@ def webhook():
 
                 if messaging_event.get("message"):  # someone sent us a message
 
-                    location = None
+                    lat = None
+                    lon = None
                     message_text = None
 
                     sender_id = messaging_event["sender"]["id"]        # the facebook ID of the person sending you the message
@@ -71,12 +72,15 @@ def webhook():
                         pass
 
                     try:
-                        location = messaging_event["message"]["attachments"]["payload"]["coordinates"]["text"]
+                        location = list(messaging_event)
+                        lat = location['entry'][0]['messaging'][0]['message']['attachments'][0]['payload']['coordinates']['lat']
+                        lon = location['entry'][0]['messaging'][0]['message']['attachments'][0]['payload']['coordinates']['lon']
                     except:
                         pass
 
 
-                    send_message(sender_id, location)
+                    send_message(sender_id, lat)
+                    send_message(sender_id, lon)
 
                     #
                     # call wit.ai method in utils.py
