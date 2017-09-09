@@ -60,7 +60,7 @@ info = wit_response("I want the prayer times for ELM on July 29")
 masjid, date = extract_info(info)
 
 print("MASJID:", masjid)
-print("DATE:", date)
+print("DATE:", date[:10])
 
 info = wit_response("I want the prayer times for ELM")
 masjid, date = extract_info(info)
