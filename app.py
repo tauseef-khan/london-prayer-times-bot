@@ -73,7 +73,9 @@ def webhook():
                         pass
 
                     try:
-                        lat = location['attachments'][0]['payload']['coordinates']['lat']
+                        lat = list(location['attachments'])[0]
+                        lat = list(lat['payload']['coordinates']['lat'])
+
                         lon = location['attachments'][0]['payload']['coordinates']['lon']
                     except:
                         pass
