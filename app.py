@@ -75,12 +75,14 @@ def webhook():
                     try:
                         lat = list(location['attachments'])[0]
                         lat = list(lat['payload']['coordinates']['lat'])
-                        print "LAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaT"
-                        print lat
 
                         lon = location['attachments'][0]['payload']['coordinates']['lon']
                     except:
                         pass
+
+
+                    print "LAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaT"
+                    print lat
 
 
                     send_message(sender_id, "here")
