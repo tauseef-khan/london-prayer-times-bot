@@ -61,7 +61,7 @@ def webhook():
 
                     lat = None
                     lon = None
-                    location = list(messaging_event)
+                    location = list(messaging_event['entry'])[0]
                     message_text = None
 
                     sender_id = messaging_event["sender"]["id"]        # the facebook ID of the person sending you the message
@@ -79,6 +79,7 @@ def webhook():
                         pass
 
 
+                    send_message(sender_id, "here")
                     send_message(sender_id, location)
                     send_message(sender_id, lat)
                     send_message(sender_id, lon)
