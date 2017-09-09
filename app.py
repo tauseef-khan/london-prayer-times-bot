@@ -78,6 +78,10 @@ def webhook():
                         message = sheets.construct_schedule(date=None)
                         send_message(sender_id, message)
 
+                    if (payload_text == "coordinates"):
+                        send_message(sender_id, "Found location")
+
+
     return "ok", 200
 
 
