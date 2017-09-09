@@ -68,11 +68,11 @@ def webhook():
                         pass
 
                     try:
-                        location = messaging_event["payload"]["coordinates"]:
+                        location = messaging_event["payload"]["coordinates"]
                     except:
                         pass
 
-                    
+
                     send_message(sender_id, location)
 
                     #
