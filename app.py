@@ -82,7 +82,7 @@ def webhook():
 
 
                     print "LAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaT"
-                    print lat
+                    print location
 
 
                     send_message(sender_id, "here")
