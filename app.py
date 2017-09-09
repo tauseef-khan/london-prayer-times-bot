@@ -61,15 +61,25 @@ def webhook():
 
                     sender_id = messaging_event["sender"]["id"]        # the facebook ID of the person sending you the message
                     recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
-                    message_text = messaging_event["message"]["text"]  # the message's text
 
+                    if messaging_event["message"]["text"]:
+                        message_text = messaging_event["message"]["text"]  # the message's text
+
+                    elif messaging_event["payload"]["coordinates"]:
+                        location = messaging_event["message"]["text"]
+
+
+                    end_message(sender_id, location)
+
+                    #
                     # call wit.ai method in utils.py
-                    ai_response = ai.wit_response(message_text)
-                    masjid, date = ai.extract_info(ai_response)
+                    #ai_response = ai.wit_response(message_text)
+                    #masjid, date = ai.extract_info(ai_response)
 
-                    if date != None:
-                        message = sheets.construct_schedule(date)
-                        send_message(sender_id, message)
+                    #if date != None:
+                    #    message = sheets.construct_schedule(date)
+                    #    send_message(sender_id, message)
+                    #
 
                     #message = sheets.construct_schedule()
                     #send_message(sender_id, message)
