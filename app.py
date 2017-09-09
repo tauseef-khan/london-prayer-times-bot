@@ -47,7 +47,7 @@ def webhook():
 
                     # call wit.ai method in utils.py
                     ai_response = ai.wit_response(message_text)
-                    masjid, date = extract_info(info)
+                    masjid, date = ai.extract_info(info)
 
                     if date != None:
                         message = sheets.construct_schedule(date)
