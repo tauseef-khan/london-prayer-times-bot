@@ -19,7 +19,7 @@ def construct_schedule(date):
     date_today = None
 
     if date != None:
-        prayerDate = datetime.datetime.strptime(date, '%Y-%m-%d')
+        prayerDate = datetime.datetime.strptime(date, '%Y-%m-%d %H:%M:%S.%f')
 
         day = prayerDate.day
         month = prayerDate.month
