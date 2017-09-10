@@ -80,9 +80,9 @@ def webhook():
 
 
                     send_message(sender_id, "here")
-                    send_message(sender_id, location)
+                    #send_message(sender_id, location)
                     send_message(sender_id, lat)
-                    send_message(sender_id, lon)
+                    #send_message(sender_id, lon)
 
                     #
                     # call wit.ai method in utils.py
@@ -120,10 +120,17 @@ def send_message(recipient_id, message_text):
             "text": message_text
         },
         "attachment": {
-            "title": "test",
-            "url": "https://facebook.com/",
-            "type":"fallback",
-            "payload": ""
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": {
+                    "element": {
+                        "title": "Your current location",
+                        "image_url": "https://stackoverflow.com/questions/38017382/how-to-send-location-from-facebook-messenger-platform",
+                        "item_url": "https://stackoverflow.com/questions/38017382/how-to-send-location-from-facebook-messenger-platform"
+                    }
+                }
+            }
         }
     })
     r = requests.post("https://graph.facebook.com/v2.6/me/messages", params=params, headers=headers, data=data)
