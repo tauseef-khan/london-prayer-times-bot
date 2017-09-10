@@ -61,7 +61,7 @@ def webhook():
 
                     lat = None
                     lon = None
-                    location = messaging_event['message']['attachments'][0]['payload']['coordinates']['lat']
+                    location = None
                     message_text = None
 
                     sender_id = messaging_event["sender"]["id"]        # the facebook ID of the person sending you the message
@@ -73,16 +73,10 @@ def webhook():
                         pass
 
                     try:
-                        lat = list(location['attachments'])[0]
-                        lat = list(lat['payload']['coordinates']['lat'])
-
-                        lon = location['attachments'][0]['payload']['coordinates']['lon']
+                        lat = messaging_event['message']['attachments'][0]['payload']['coordinates']['lat']
+                        lon = messaging_event['message']['attachments'][0]['payload']['coordinates']['lon']
                     except:
                         pass
-
-
-                    print "LAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaT"
-                    print location
 
 
                     send_message(sender_id, "here")
@@ -124,6 +118,12 @@ def send_message(recipient_id, message_text):
         },
         "message": {
             "text": message_text
+        },
+        "attachment": {
+            "title": "test",
+            "url": "https://facebook.com/",
+            "type":"fallback",
+            "payload": null
         }
     })
     r = requests.post("https://graph.facebook.com/v2.6/me/messages", params=params, headers=headers, data=data)
