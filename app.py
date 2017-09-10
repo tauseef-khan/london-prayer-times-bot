@@ -39,6 +39,30 @@ def webhook():
         for entry in data["entry"]:
             for messaging_event in entry["messaging"]:
 
+                if messaging_event.get("message"):  # someone sent us a message
+
+                    sender_id = messaging_event["sender"]["id"]        # the facebook ID of the person sending you the message
+                    recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
+                    message_text = messaging_event["message"]["text"]  # the message's text
+
+                    # call wit.ai method in utils.py
+                    ai_response = ai.wit_response(message_text)
+                    masjid, date = ai.extract_info(ai_response)
+
+                    if date != None:
+                        message = sheets.construct_schedule(date)
+                        send_message(sender_id, message)
+
+                    #message = sheets.construct_schedule()
+                    #send_message(sender_id, message)
+                    #send_message(sender_id, "This is where I am when user puts in their onw message...maybe.")
+
+                if messaging_event.get("delivery"):  # delivery confirmation
+                    pass
+
+                if messaging_event.get("optin"):  # optin confirmation
+                    pass
+
                 if messaging_event.get("postback"):  # user clicked/tapped "postback" button in earlier message
 
                     sender_id = messaging_event["sender"]["id"]        # the facebook ID of the person sending you the message
@@ -53,51 +77,6 @@ def webhook():
                     if (payload_text == "todays prayer times"):
                         message = sheets.construct_schedule(date=None)
                         send_message(sender_id, message)
-
-                    if (payload_text == "coordinates"):
-                        send_message(sender_id, "Found location")
-
-                if messaging_event.get("message"):  # someone sent us a message
-
-                    lat = None
-                    lon = None
-                    location = None
-                    message_text = None
-
-                    sender_id = messaging_event["sender"]["id"]        # the facebook ID of the person sending you the message
-                    recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
-
-                    try: 
-                        message_text = messaging_event["message"]["text"]  # the message's text
-                    except:
-                        pass
-
-                    try:
-                        lat = messaging_event['message']['attachments'][0]['payload']['coordinates']['lat']
-                        lon = messaging_event['message']['attachments'][0]['payload']['coordinates']['lon']
-                    except:
-                        pass
-
-
-                    send_message(sender_id, "here")
-                    #send_message(sender_id, location)
-                    send_message(sender_id, lat)
-                    #send_message(sender_id, lon)
-
-                    #
-                    # call wit.ai method in utils.py
-                    #ai_response = ai.wit_response(message_text)
-                    #masjid, date = ai.extract_info(ai_response)
-
-                    #if date != None:
-                    #    message = sheets.construct_schedule(date)
-                    #    send_message(sender_id, message)
-                    #
-
-                    #message = sheets.construct_schedule()
-                    #send_message(sender_id, message)
-                    #send_message(sender_id, "This is where I am when user puts in their onw message...maybe.")
-
 
     return "ok", 200
 
@@ -117,19 +96,7 @@ def send_message(recipient_id, message_text):
             "id": recipient_id
         },
         "message": {
-                "attachment": {
-                "type": "template",
-                "payload": {
-                    "template_type": "generic",
-                    "elements": {
-                        "element": {
-                            "title": "Your current location",
-                            "image_url": "https://stackoverflow.com/questions/38017382/how-to-send-location-from-facebook-messenger-platform",
-                            "item_url": "https://stackoverflow.com/questions/38017382/how-to-send-location-from-facebook-messenger-platform"
-                        }
-                    }
-                }
-                }   
+            "text": message_text
         }
     })
     r = requests.post("https://graph.facebook.com/v2.6/me/messages", params=params, headers=headers, data=data)
