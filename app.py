@@ -52,10 +52,9 @@ def webhook():
                     if date != None:
                         message = sheets.construct_schedule(date)
                         send_message(sender_id, message)
-
-                    #message = sheets.construct_schedule()
-                    #send_message(sender_id, message)
-                    #send_message(sender_id, "This is where I am when user puts in their onw message...maybe.")
+                    else:
+                        message = sheets.construct_schedule(None)
+                        send_message(sender_id, message)
 
                 if messaging_event.get("delivery"):  # delivery confirmation
                     pass
