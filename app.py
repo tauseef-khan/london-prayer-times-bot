@@ -117,20 +117,20 @@ def send_message(recipient_id, message_text):
             "id": recipient_id
         },
         "message": {
-            "text": message_text
-        },
-        "attachment": {
-            "type": "template",
-            "payload": {
-                "template_type": "generic",
-                "elements": {
-                    "element": {
-                        "title": "Your current location",
-                        "image_url": "https://stackoverflow.com/questions/38017382/how-to-send-location-from-facebook-messenger-platform",
-                        "item_url": "https://stackoverflow.com/questions/38017382/how-to-send-location-from-facebook-messenger-platform"
+            "text": message_text,
+                "attachment": {
+                "type": "template",
+                "payload": {
+                    "template_type": "generic",
+                    "elements": {
+                        "element": {
+                            "title": "Your current location",
+                            "image_url": "https://stackoverflow.com/questions/38017382/how-to-send-location-from-facebook-messenger-platform",
+                            "item_url": "https://stackoverflow.com/questions/38017382/how-to-send-location-from-facebook-messenger-platform"
+                        }
                     }
                 }
-            }
+                }   
         }
     })
     r = requests.post("https://graph.facebook.com/v2.6/me/messages", params=params, headers=headers, data=data)
