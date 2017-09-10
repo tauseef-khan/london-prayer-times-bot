@@ -89,7 +89,7 @@ def webhook():
 # sends a TEXT message to the user
 def send_message(recipient_id, message_text):
 
-    # print in heroku to check everything is OK
+    # print in heroku to check everything is okay
     log("sending message to {recipient}: {text}".format(recipient=recipient_id, text=message_text))
 
     # three variables below construct the message to be sent
