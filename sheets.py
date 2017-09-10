@@ -1,3 +1,6 @@
+# sheets.py
+# when the use of querying the prayer times worksheet is required via the use of Google Sheets and gspread
+
 import datetime
 import pytz
 import gspread
@@ -6,6 +9,7 @@ import subprocess
 import os
 import json
 
+# create the message contents of the prayer times message
 def construct_schedule(date):
 
     # get date details
@@ -18,6 +22,7 @@ def construct_schedule(date):
     year = None
     date_today = None
 
+    # depends if date specified in users message or 'Todays Prayer Times' is pressed
     if date != None:
         prayerDate = datetime.datetime.strptime(date[:10], '%Y-%m-%d')
 

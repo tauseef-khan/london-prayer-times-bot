@@ -1,3 +1,6 @@
+# ai.py
+# when user messages need to be processed using the wit.ai NLP platform, convert user input to narrowly defined outputs for easy processing
+
 import os
 from wit import Wit
 import json
@@ -6,12 +9,13 @@ access_token = os.environ['WIT_AI_TOKEN']
 
 client = Wit(access_token = access_token)
 
+# TEST REQUEST
 #message_text = "ELM 15 July"
-
 #resp = client.message(message_text)
-
 #print(resp)
 
+# when the user types something, this method is called to convert message into a narrowly defined output to make things easier to process
+# at the moment, it will return the masque and date typed by the user for further processing as these are the entities defined in wit.ai
 def wit_response(message_text):
 	resp = client.message(message_text)
 	entity = None
@@ -32,6 +36,7 @@ def wit_response(message_text):
 	return (entity, value, entity2, value2)
 
 
+# using the output given by wit.ai, the specific mosque and date will be extracted for further processing
 def extract_info(info):
 
 	masjid = None
@@ -55,6 +60,8 @@ def extract_info(info):
 
 	return (masjid, date)
 
+
+# EXAMPLE WIT.AI REQUESTS
 
 #info = wit_response("I want the prayer times for ELM on July 29")
 #masjid, date = extract_info(info)
