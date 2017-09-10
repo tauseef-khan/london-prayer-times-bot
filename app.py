@@ -123,7 +123,6 @@ def send_message(recipient_id, message_text):
             "title": "test",
             "url": "https://facebook.com/",
             "type":"fallback",
-            "payload": null
         }
     })
     r = requests.post("https://graph.facebook.com/v2.6/me/messages", params=params, headers=headers, data=data)
