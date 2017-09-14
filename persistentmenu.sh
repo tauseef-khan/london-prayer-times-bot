@@ -16,7 +16,7 @@ curl -X POST -H "Content-Type: application/json" -d '{
       "call_to_actions":[
         {
           "type":"postback",
-          "title":'$c',
+          "title":"'$c'",
           "payload":"Todays Prayer Times"
         },
         {
