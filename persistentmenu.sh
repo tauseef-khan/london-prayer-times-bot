@@ -3,11 +3,6 @@
 # persistentmenyu.sh: sets persistent menu
 # Execute once only
 
-a = "Today's" 
-b = " Prayer Times"
-c = $a$b
-
-
 curl -X POST -H "Content-Type: application/json" -d '{
   "persistent_menu":[
     {
@@ -16,7 +11,7 @@ curl -X POST -H "Content-Type: application/json" -d '{
       "call_to_actions":[
         {
           "type":"postback",
-          "title":"'$c'",
+          "title":"Prayer times for today",
           "payload":"Todays Prayer Times"
         },
         {
