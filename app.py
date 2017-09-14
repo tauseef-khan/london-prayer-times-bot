@@ -92,13 +92,13 @@ def webhook():
 # ...because the message might chnage over time and having a method makes this easier to change
 def getStarted():
 
-    capability = "At the moment the bot can get today's prayer times or get the prayer times for any date this calendar year\n\n"
+    capability = "At the moment the bot can:\n 1) Get today's prayer times \n 2) Get the prayer times for any date this calendar year.\n\n"
 
     # feature 1 - get today's prayer times
-    todayTimes = "TODAY'S PRAYER TIMES:\n Swipe up on the menu below and press \"Today's Prayer Times\" \n\n"
+    todayTimes = "TODAY'S PRAYER TIMES:\n - Swipe up on the menu below and press \"Payer times for today\". \n\n"
 
     # feature 2 - get prayer times for any date in this calenday year
-    anyTime = "PRAYER TIMES FOR ANY DATE:\n Swipe up in the menu below and press \"Send Message\" then type in a date, say '10 May' and the prayer times for 10 May will be shown"
+    anyTime = "PRAYER TIMES FOR ANY DATE:\n - Swipe up in the menu below and press \"Send message\" then type in a date, say '10 May' and the prayer times for 10 May will be shown."
 
     message = capability + todayTimes + anyTime
 
