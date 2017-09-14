@@ -14,8 +14,7 @@ So far only prayer time data from East London Mosque (ELM) is used.
 * get prayer times for any date via user input (for ELM only)
 
 ## Features currently being developed:
-* find nearest mosque (location feature)
+* find nearest mosque in London (location feature)
 
 ## Roadmap:
-* Getting started instructions
-* Incorporate data from other mosques
+* incorporate prayer time data from other mosques
