@@ -28,14 +28,14 @@ def construct_schedule(date):
 
         day = prayerDate.day
         month = prayerDate.month
-        year = prayerDate.year
+        year = 2017
         date_today = str(day) + "/" + str(month) + "/" + str(year)
 
     else:
         now = datetime.datetime.now(pytz.timezone('Europe/London'))
         day = now.day
         month = now.month
-        year = now.year
+        year = 2017
         date_today = str(day) + "/" + str(month) + "/" + str(year)
 
     monthCode = ""
