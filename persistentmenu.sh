@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# persistentmenyu.sh: sets persistent menu
+# persistentmenyu.sh: sets persistent menu located at the bottom
 # Execute once only
 
 curl -X POST -H "Content-Type: application/json" -d '{
