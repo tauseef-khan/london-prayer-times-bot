@@ -76,15 +76,33 @@ def webhook():
                      
                     # when the user first uses the bot and presses the "get started" button (TO BE IMPLEMENTED)
                     if (payload_text == "get started"):
-                        send_message(sender_id, "")
+                        
+                        message = getStarted()
+                        send_message(sender_id, message)
 
                     # when the menu option "Todays Prayer Times" is selected
                     if (payload_text == "todays prayer times"):
+                        
                         message = sheets.construct_schedule(date=None)
                         send_message(sender_id, message)
 
     return "ok", 200
 
+# method specifically for when 'get started' button is pressed
+# ...because the message might chnage over time and having a method makes this easier to change
+def getStarted():
+
+    capability = "At the moment the bot can get today's prayer times or get the prayer times for any date this calendar year\n"
+
+    # feature 1 - get today's prayer times
+    todayTimes = "TODAY'S PRAYER TIMES:\n Swipe up on the menu below and press \"Today's Prayer Times\" \n"
+
+    # feature 2 - get prayer times for any date in this calenday year
+    anyTime = "PRAYER TIMES FOR ANY DATE:\n Swipe up in the menu below and press \"Send Message\" then type in a date, say '10 May' and the prayer times for 10 May will be shown"
+
+    message = capability + todayTimes + anyTime
+
+    return message
 
 # sends a TEXT message to the user
 def send_message(recipient_id, message_text):
