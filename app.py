@@ -98,7 +98,7 @@ def getStarted():
     todayTimes = "TODAY'S PRAYER TIMES:\n Swipe up on the menu below and press \"Payer times for today\". \n\n"
 
     # feature 2 - get prayer times for any date in this calenday year
-    anyTime = "PRAYER TIMES FOR ANY DATE:\n Swipe up in the menu below and press \"Send message\" then type in a date, say '10 May' and the prayer times for 10 May will be shown."
+    anyTime = "PRAYER TIMES FOR ANY DATE:\n Swipe up in the menu below and press \"Send message\" then type in a date, say '10 May' and the prayer times for 10 May will be shown.\n\n"
 
     # disclaimer sort of thing, explaining what source is used for the prayer times
     note = "NOTE: The prayer times in this bot are based on the 2017 East London Mosque prayer times."
