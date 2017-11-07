@@ -95,7 +95,7 @@ def getStarted():
     capability = "At the moment the bot can:\n 1) Get today's prayer times \n 2) Get the prayer times for any date this calendar year.\n\n"
 
     # feature 1 - get today's prayer times
-    todayTimes = "TODAY'S PRAYER TIMES:\n Swipe up on the menu below and press \"Payer times for today\". \n\n"
+    todayTimes = "TODAY'S PRAYER TIMES:\n Swipe up on the menu below and press \"Prayer times for today\". \n\n"
 
     # feature 2 - get prayer times for any date in this calenday year
     anyTime = "PRAYER TIMES FOR ANY DATE:\n Swipe up in the menu below and press \"Send message\" then type in a date, say '10 May' and the prayer times for 10 May will be shown.\n\n"
